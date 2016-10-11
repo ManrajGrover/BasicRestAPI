@@ -48,7 +48,7 @@
       if(count($data) === 0) {
         $arrResponse = array('error' => true, 'message' => 'No more pages exist');
       } else {
-        $arrResponse = array('error' => false, 'clinics' => $clinics);
+        $arrResponse = array('error' => false, 'clinics' => $data);
       }
 
     } catch(PDOException $Exception) {
