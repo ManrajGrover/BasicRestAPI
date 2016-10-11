@@ -63,7 +63,7 @@
       $db = new DbAccess('localhost', '8889', 'root', 'root', 'healthcare');
       $db_connect = $db->connect();
 
-      $doc_id = ((int) $request->getAttribute('id')) > 0 ? ((int) $request->getAttribute('id')) : 0;
+      $doc_id = ((int) $request->getAttribute('id'));
 
       $doc_query = "SELECT * FROM doctors WHERE id = :id;";
       $doc_params = array('id' => $doc_id);
@@ -75,14 +75,16 @@
         $arrResponse = array("error" => true, "message" => "No doctor exist with given ID");
       }
       else {
-        $arrResponse = array("error" => false,"doctor" => $doc_data[0], "clinics" => null);
+        $clinics_query = "SELECT clinics.id, clinics.name, clinics.street, clinics.city, clinics.state, clinics.country, clinics.zipcode FROM `clinics` LEFT JOIN doctors_clinics ON clinics.id = doctors_clinics.cl_id WHERE doctors_clinics.doc_id = :id";
+
+        $clinics_prep_query = $db_connect->prepare($clinics_query);
+        $clinics_data = $db->query($clinics_prep_query, $doc_params);
+
+        $arrResponse = array("error" => false,"doctor" => $doc_data[0], "clinics" => $clinics_data);
       }
 
-      // $prepare_query = "SELECT * FROM clinics LIMIT :limit OFFSET :offset;";
-      // $query = $db_connect->prepare($prepare_query);
-      // $data = $db->query($query, $params);
     } catch(PDOException $Exception) {
-      $data = array('error' => true, 'message' => 'Server is unable to get data');
+      $arrResponse = array('error' => true, 'message' => 'Server is unable to get data');
     }
 
     return $response->withJson($arrResponse);
