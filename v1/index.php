@@ -4,6 +4,7 @@
 
   require_once '../vendor/autoload.php';
   require_once '../includes/DbAccess.php';
+  require_once '../includes/functions.php';
 
   $app = new \Slim\App;
 
@@ -13,17 +14,9 @@
       $db_connect = $db->connect();
 
       $allParams = $request->getQueryParams();
-      $limit = 10;
 
-      $pageNumber = (int)$allParams['page'];
-      if ($pageNumber <= 0) {
-        $offset = 0;
-      }
-      else {
-        $offset = $limit * ($pageNumber - 1);
-      }
+      $params = getOffset($allParams);
 
-      $params = array('limit' => $limit, 'offset' => $offset);
       $prepare_query = "SELECT * FROM doctors LIMIT :limit OFFSET :offset;";
       $query = $db_connect->prepare($prepare_query);
       $data = $db->query($query, $params);
@@ -37,22 +30,69 @@
     return $response->withJson($data);
   });
 
-  $app->get('/clinics', 'getAllClinics');
-  $app->get('/doctors/{id}', 'getDoctorDetails');
-  $app->get('/clinics/{id}', 'getClinicsDetails');
+  $app->get('/clinics', function (Request $request, Response $response) use ($app) {
+    try {
+      $db = new DbAccess('localhost', '8889', 'root', 'root', 'healthcare');
+      $db_connect = $db->connect();
+
+      $allParams = $request->getQueryParams();
+
+      $params = getOffset($allParams);
+      $prepare_query = "SELECT * FROM clinics LIMIT :limit OFFSET :offset;";
+      $query = $db_connect->prepare($prepare_query);
+      $data = $db->query($query, $params);
+
+      $response = $response->withJson($data);
+    } catch(PDOException $Exception) {
+
+      $data = array('error' => true, 'message' => 'Server is unable to get data');
+
+    }
+    return $response->withJson($data);
+  });
 
 
-  function getAllClinics(Request $request, Response $response) {
+  $app->get('/doctors/{id}', function (Request $request, Response $response) use ($app) {
+    try {
+      $db = new DbAccess('localhost', '8889', 'root', 'root', 'healthcare');
+      $db_connect = $db->connect();
 
-  }
+      $doc_id = $request->getAttribute('id');
 
-  function getDoctorDetails (Request $request, Response $response) {
-    $doc_id = $request->getAttribute('id');
-  }
+      $params = getOffset($allParams);
+      $prepare_query = "SELECT * FROM clinics LIMIT :limit OFFSET :offset;";
+      $query = $db_connect->prepare($prepare_query);
+      $data = $db->query($query, $params);
 
-  function getClinicsDetails (Request $request, Response $response) {
-    $clinic_id = $request->getAttribute('id');
-  }
+      $response = $response->withJson($data);
+    } catch(PDOException $Exception) {
+
+      $data = array('error' => true, 'message' => 'Server is unable to get data');
+
+    }
+    return $response->withJson($data);
+  });
+
+  $app->get('/clinics/{id}', function (Request $request, Response $response) use ($app) {
+    try {
+      $db = new DbAccess('localhost', '8889', 'root', 'root', 'healthcare');
+      $db_connect = $db->connect();
+
+      $doc_id = $request->getAttribute('id');
+
+      $params = getOffset($allParams);
+      $prepare_query = "SELECT * FROM clinics LIMIT :limit OFFSET :offset;";
+      $query = $db_connect->prepare($prepare_query);
+      $data = $db->query($query, $params);
+
+      $response = $response->withJson($data);
+    } catch(PDOException $Exception) {
+
+      $data = array('error' => true, 'message' => 'Server is unable to get data');
+
+    }
+    return $response->withJson($data);
+  });
 
   $app->run();
 ?>
