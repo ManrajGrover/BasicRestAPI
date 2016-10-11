@@ -95,20 +95,30 @@
       $db = new DbAccess('localhost', '8889', 'root', 'root', 'healthcare');
       $db_connect = $db->connect();
 
-      $doc_id = $request->getAttribute('id');
+      $cl_id = ((int) $request->getAttribute('id'));
 
-      $params = getOffset($allParams);
-      $prepare_query = "SELECT * FROM clinics LIMIT :limit OFFSET :offset;";
-      $query = $db_connect->prepare($prepare_query);
-      $data = $db->query($query, $params);
+      $cl_query = "SELECT * FROM clinics WHERE id = :id;";
+      $cl_params = array('id' => $cl_id);
 
-      $response = $response->withJson($data);
+      $cl_prep_query = $db_connect->prepare($cl_query);
+      $cl_data = $db->query($cl_prep_query, $cl_params);
+
+      if (count($cl_data) === 0) {
+        $arrResponse = array("error" => true, "message" => "No clinics exist with given ID");
+      }
+      else {
+        $doctors_query = "SELECT doctors.id, doctors.name, doctors.contact, doctors.email FROM `doctors` LEFT JOIN doctors_clinics ON doctors.id = doctors_clinics.doc_id WHERE doctors_clinics.cl_id = :id";
+
+        $doctors_prep_query = $db_connect->prepare($doctors_query);
+        $doctors_data = $db->query($doctors_prep_query, $cl_params);
+
+        $arrResponse = array("error" => false,"clinic" => $cl_data[0], "doctors" => $doctors_data);
+      }
+
     } catch(PDOException $Exception) {
-
-      $data = array('error' => true, 'message' => 'Server is unable to get data');
-
+      $arrResponse = array('error' => true, 'message' => 'Server is unable to get data');
     }
-    return $response->withJson($data);
+    return $response->withJson($arrResponse);
   });
 
   $app->run();
