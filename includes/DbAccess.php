@@ -43,7 +43,7 @@
      * @param  String $params Parameters to be used in prepared query
      * @return Array          Array of rows fetched from database
      */
-    public function query($_query, $params) {
+    public function query($_query, $params = null) {
       $db_connect = $this->connect();
       $_query->execute($params);
       return $_query->fetchAll();
