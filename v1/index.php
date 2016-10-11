@@ -21,13 +21,16 @@
       $query = $db_connect->prepare($prepare_query);
       $data = $db->query($query, $params);
 
-      $response = $response->withJson($data);
+      if (count($data) === 0) {
+        $arrResponse = array('error' => true, 'message' => 'No more pages exist');
+      } else {
+        $arrResponse = array('error' => false, 'doctors' => $data);
+      }
+
     } catch(PDOException $Exception) {
-
-      $data = array('error' => true, 'message' => 'Server is unable to get data');
-
+      $arrResponse = array('error' => true, 'message' => 'Server is unable to get data');
     }
-    return $response->withJson($data);
+    return $response->withJson($arrResponse);
   });
 
   $app->get('/clinics', function (Request $request, Response $response) use ($app) {
@@ -42,13 +45,16 @@
       $query = $db_connect->prepare($prepare_query);
       $data = $db->query($query, $params);
 
-      $response = $response->withJson($data);
+      if(count($data) === 0) {
+        $arrResponse = array('error' => true, 'message' => 'No more pages exist');
+      } else {
+        $arrResponse = array('error' => false, 'clinics' => $clinics);
+      }
+
     } catch(PDOException $Exception) {
-
-      $data = array('error' => true, 'message' => 'Server is unable to get data');
-
+      $arrResponse = array('error' => true, 'message' => 'Server is unable to get data');
     }
-    return $response->withJson($data);
+    return $response->withJson($arrResponse);
   });
 
 
@@ -57,20 +63,29 @@
       $db = new DbAccess('localhost', '8889', 'root', 'root', 'healthcare');
       $db_connect = $db->connect();
 
-      $doc_id = $request->getAttribute('id');
+      $doc_id = ((int) $request->getAttribute('id')) > 0 ? ((int) $request->getAttribute('id')) : 0;
 
-      $params = getOffset($allParams);
-      $prepare_query = "SELECT * FROM clinics LIMIT :limit OFFSET :offset;";
-      $query = $db_connect->prepare($prepare_query);
-      $data = $db->query($query, $params);
+      $doc_query = "SELECT * FROM doctors WHERE id = :id;";
+      $doc_params = array('id' => $doc_id);
 
-      $response = $response->withJson($data);
+      $doc_prep_query = $db_connect->prepare($doc_query);
+      $doc_data = $db->query($doc_prep_query, $doc_params);
+
+      if (count($doc_data) === 0) {
+        $arrResponse = array("error" => true, "message" => "No doctor exist with given ID");
+      }
+      else {
+        $arrResponse = array("error" => false,"doctor" => $doc_data[0], "clinics" => null);
+      }
+
+      // $prepare_query = "SELECT * FROM clinics LIMIT :limit OFFSET :offset;";
+      // $query = $db_connect->prepare($prepare_query);
+      // $data = $db->query($query, $params);
     } catch(PDOException $Exception) {
-
       $data = array('error' => true, 'message' => 'Server is unable to get data');
-
     }
-    return $response->withJson($data);
+
+    return $response->withJson($arrResponse);
   });
 
   $app->get('/clinics/{id}', function (Request $request, Response $response) use ($app) {
