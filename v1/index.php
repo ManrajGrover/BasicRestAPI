@@ -80,7 +80,7 @@
         $clinics_prep_query = $db_connect->prepare($clinics_query);
         $clinics_data = $db->query($clinics_prep_query, $doc_params);
 
-        $arrResponse = array("error" => false,"doctor" => $doc_data[0], "clinics" => $clinics_data);
+        $arrResponse = array("error" => false, "doctor" => $doc_data[0], "clinics" => $clinics_data);
       }
 
     } catch(PDOException $Exception) {
@@ -112,7 +112,7 @@
         $doctors_prep_query = $db_connect->prepare($doctors_query);
         $doctors_data = $db->query($doctors_prep_query, $cl_params);
 
-        $arrResponse = array("error" => false,"clinic" => $cl_data[0], "doctors" => $doctors_data);
+        $arrResponse = array("error" => false, "clinic" => $cl_data[0], "doctors" => $doctors_data);
       }
 
     } catch(PDOException $Exception) {
