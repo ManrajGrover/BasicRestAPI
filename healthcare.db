@@ -1,0 +1,521 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:8889
+-- Generation Time: Oct 11, 2016 at 05:54 PM
+-- Server version: 5.6.28
+-- PHP Version: 7.0.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `healthcare`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clinics`
+--
+
+CREATE TABLE `clinics` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `street` varchar(50) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `state` varchar(30) NOT NULL,
+  `country` varchar(30) NOT NULL,
+  `zipcode` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `clinics`
+--
+
+INSERT INTO `clinics` (`id`, `name`, `street`, `city`, `state`, `country`, `zipcode`) VALUES
+(1, 'pharetra, felis', 'P.O. Box 276, 5915 Eget Ave', 'Saint-Denis', 'Île-de-France', 'Mauritania', '12-215'),
+(2, 'varius et,', '799-930 Semper, Rd.', 'Roosendaal', 'N.', 'Japan', '07757'),
+(3, 'egestas lacinia.', '8604 Feugiat Ave', 'Okene', 'Kogi', 'Suriname', '6131XA'),
+(4, 'euismod ac,', 'P.O. Box 207, 3181 Mollis St.', 'Villafalletto', 'PIE', 'Ukraine', '357697'),
+(5, 'risus. Nulla', 'Ap #684-9416 Ullamcorper Road', 'Dörtyol', 'Hatay', 'Micronesia', '68866'),
+(6, 'Aenean gravida', '213-7278 Sapien. Av.', 'Zapallar', 'V', 'Germany', '63522'),
+(7, 'eu, ultrices', 'Ap #547-1152 Ultrices St.', 'Chełm', 'LU', 'Virgin Islands, United States', '3848'),
+(8, 'ut, nulla.', '5818 Proin Rd.', 'Worcester', 'Massachusetts', 'Brunei', '895252'),
+(9, 'diam luctus', '4025 Pede Rd.', 'Göteborg', 'O', 'Kazakhstan', '4354'),
+(10, 'vel, faucibus', 'Ap #608-1391 Tincidunt Road', 'West Vancouver', 'British Columbia', 'Cape Verde', '08406-946'),
+(11, 'sociis natoque', '505-5676 Vulputate Ave', 'Ujjain', 'MP', 'Comoros', '8433'),
+(12, 'iaculis odio.', 'Ap #318-6962 Dui, St.', 'Dublin', 'Leinster', 'United Arab Emirates', '7360'),
+(13, 'Nullam ut', '2820 Sapien. St.', 'Haarlem', 'Noord Holland', 'Haiti', 'H2T 4K9'),
+(14, 'dictum sapien.', '6263 Mattis Street', 'Buguma', 'RI', 'Madagascar', '6151'),
+(15, 'sem ut', 'Ap #947-4263 Fusce Street', 'Hamilton', 'Victoria', 'Curaçao', '37-261'),
+(16, 'arcu. Sed', '430-8361 Vulputate Street', 'Orange', 'NSW', 'Curaçao', 'M4P 0J1'),
+(17, 'nec, imperdiet', 'Ap #414-337 Ac Rd.', 'Pinto', 'Biobío', 'Holy See (Vatican City State)', '64352'),
+(18, 'diam at', 'P.O. Box 271, 4990 Ornare Ave', 'Dublin', 'L', 'Antigua and Barbuda', 'RF5 3SJ'),
+(19, 'elementum, dui', '451 Nullam Rd.', 'Vienna', 'Vienna', 'Vanuatu', '51403'),
+(20, 'Curabitur sed', 'P.O. Box 920, 3978 Tempus, Street', 'Haut-Ittre', 'WB', 'Malawi', 'U80 7WO'),
+(21, 'libero est,', 'P.O. Box 274, 2642 Fusce St.', 'Wrocław', 'DS', 'Tajikistan', '64162'),
+(22, 'ornare. Fusce', 'Ap #336-7974 Lacinia Rd.', 'L�vis', 'QC', 'Morocco', '95852'),
+(23, 'interdum libero', '9071 Odio St.', 'Versailles', 'Île-de-France', 'Indonesia', '97846'),
+(24, 'mollis nec,', 'Ap #214-7175 Mus. St.', 'Quilicura', 'Metropolitana de Santiago', 'Bulgaria', '90002-713'),
+(25, 'Aenean euismod', '410-8712 Sollicitudin Av.', 'Spermalie', 'West-Vlaanderen', 'Slovenia', '1910'),
+(26, 'semper egestas,', 'Ap #821-3157 In Road', 'Stonewall', 'Manitoba', 'Germany', '4783'),
+(27, 'est. Nunc', 'P.O. Box 414, 9287 Vel, Rd.', 'Lo Prado', 'Metropolitana de Santiago', 'Germany', '31514'),
+(28, 'ullamcorper. Duis', '3734 Proin Rd.', 'Shepparton', 'VIC', 'Reunion', 'X2W 7C9'),
+(29, 'suscipit, est', '9421 Enim. Ave', 'San Diego', 'CA', 'Guam', '739883'),
+(30, 'ipsum ac', '445-4242 Lacinia Avenue', 'Dubbo', 'New South Wales', 'Malawi', '02240-839'),
+(31, 'ipsum dolor', 'Ap #876-1790 Gravida. Av.', 'Gisborne', 'North Island', 'Netherlands', '59928'),
+(32, 'id ante', 'P.O. Box 164, 7533 Magna Ave', 'Tarnów', 'MP', 'Paraguay', '7724SI'),
+(33, 'ac ipsum.', '998-783 Risus. St.', 'Otukpo', 'BE', 'Micronesia', '89169'),
+(34, 'Quisque imperdiet,', 'P.O. Box 692, 2806 Purus. Road', 'Helmsdale', 'SU', 'Côte D\'Ivoire (Ivory Coast)', '61408'),
+(35, 'turpis non', 'Ap #773-8759 Risus Street', 'Anderlues', 'HE', 'Heard Island and Mcdonald Isla', '5072'),
+(36, 'Sed nulla', '1720 Cubilia Street', 'Senneville', 'Quebec', 'Guinea', '51109'),
+(37, 'magna. Suspendisse', '3543 Urna, Road', 'Donosti', 'PV', 'Finland', '913702'),
+(38, 'litora torquent', '6342 Tincidunt, St.', 'Belfast', 'Ulster', 'Ireland', '721398'),
+(39, 'rhoncus. Nullam', 'P.O. Box 647, 1934 Ipsum St.', 'Caloundra', 'Queensland', 'Mauritania', '48106'),
+(40, 'volutpat. Nulla', 'P.O. Box 447, 258 Luctus Rd.', 'San Pedro', 'RM', 'New Caledonia', '4593'),
+(41, 'semper rutrum.', '998-1203 Lobortis, St.', 'The Hague', 'Z.', 'Norway', '980019'),
+(42, 'tellus eu', '818-783 Gravida. Rd.', 'Pune', 'MH', 'Kazakhstan', '06090'),
+(43, 'justo sit', '663-9603 Nam Street', 'Belfast', 'U', 'Colombia', 'B6X 8E9'),
+(44, 'in faucibus', '4233 Eget St.', 'San Juan (San Juan de Tibás)', 'SJ', 'Suriname', '9121'),
+(45, 'dolor. Donec', '114-8264 In Ave', 'Rio de Janeiro', 'RJ', 'Turks and Caicos Islands', '7957'),
+(46, 'Aliquam erat', '6152 Lacinia Rd.', 'Ávila', 'Castilla y León', 'Saint Vincent and The Grenadin', '284678'),
+(47, 'ipsum sodales', '4104 Vivamus Av.', 'Ashoknagar-Kalyangarh', 'WB', 'Eritrea', '66909'),
+(48, 'sit amet,', '571-5596 Purus, St.', 'Kansas City', 'Kansas', 'Nauru', '2014JU'),
+(49, 'amet, risus.', 'P.O. Box 131, 9929 Tristique Avenue', 'Lugo', 'GA', 'Chile', '931087'),
+(50, 'ac orci.', 'Ap #460-7299 Luctus Rd.', 'Milano', 'Lombardia', 'Ethiopia', '8870'),
+(51, 'diam dictum', '1202 Massa Road', 'Palma de Mallorca', 'BA', 'Svalbard and Jan Mayen Islands', '24436'),
+(52, 'Phasellus in', 'Ap #943-691 Duis Av.', 'Thurso', 'CA', 'French Guiana', '52-536'),
+(53, 'vitae, aliquet', '8916 Nunc. Road', 'Trollhättan', 'O', 'Norway', '21573'),
+(54, 'morbi tristique', '1796 Sit St.', 'Alanya', 'Ant', 'Saudi Arabia', '61500'),
+(55, 'adipiscing elit.', 'Ap #917-4718 Eros Rd.', 'Mustafakemalpaşa', 'Bur', 'Antarctica', '75148'),
+(56, 'dapibus quam', '7317 Vel St.', 'Gibbons', 'Alberta', 'Lithuania', '2956'),
+(57, 'nisi. Cum', 'Ap #451-8768 Elementum, St.', 'Blind River', 'Ontario', 'Moldova', '21913'),
+(58, 'velit. Quisque', 'P.O. Box 377, 3268 Sit Ave', 'Sherborne', 'DO', 'Senegal', '70805'),
+(59, 'sagittis felis.', 'Ap #523-8769 Sagittis. St.', 'Kapiti', 'NI', 'Falkland Islands', '1439'),
+(60, 'urna, nec', 'P.O. Box 757, 4446 Duis Street', 'Cinco Esquinas', 'SJ', 'Luxembourg', '721215'),
+(61, 'fermentum vel,', '892-7780 Nulla St.', 'Aserrí', 'SJ', 'Austria', '36596'),
+(62, 'magna. Phasellus', 'Ap #124-4936 Adipiscing Ave', 'Baltimore', 'MD', 'Bhutan', 'DZ5 0EE'),
+(63, 'eleifend egestas.', '7478 Urna. Rd.', 'Canmore', 'AB', 'Panama', '78410'),
+(64, 'felis eget', 'Ap #525-7496 Sed Road', 'Łódź', 'LD', 'Guam', '05596'),
+(65, 'velit egestas', 'P.O. Box 114, 4751 In St.', 'Grasse', 'Provence-Alpes-Côte d\'Azur', 'Ireland', '27386'),
+(66, 'scelerisque mollis.', 'Ap #290-1447 Tristique Ave', 'Montgomery', 'Alabama', 'Bouvet Island', '6672CG'),
+(67, 'et magnis', 'P.O. Box 276, 4070 Non Avenue', 'Lauro de Freitas', 'Bahia', 'Benin', '822884'),
+(68, 'justo nec', '900-2804 Auctor. Avenue', 'Wałbrzych', 'Dolnośląskie', 'Micronesia', '3906'),
+(69, 'non ante', 'Ap #481-8312 Donec Ave', 'Cheyenne', 'WY', 'Libya', '94822'),
+(70, 'Donec est.', '598 Convallis Av.', 'Leganés', 'Madrid', 'Burundi', '9105'),
+(71, 'at, egestas', 'Ap #860-9201 Fusce Rd.', 'Vienna', 'Vienna', 'Sao Tome and Principe', '97413'),
+(72, 'fringilla euismod', 'P.O. Box 829, 1736 Cras Street', 'Concepción', 'San José', 'Nauru', 'J1H 3G1'),
+(73, 'elementum at,', '167-7417 Eget Ave', 'Berlin', 'Berlin', 'Mongolia', '56903'),
+(74, 'purus gravida', '9439 Eu Rd.', 'Muzaffarpur', 'Bihar', 'Zimbabwe', '87-554'),
+(75, 'Vivamus sit', '814-3805 Vitae Ave', 'Oldenzaal', 'Ov', 'Viet Nam', '21505'),
+(76, 'ullamcorper, nisl', 'Ap #639-4411 Sem Road', 'Gatineau', 'Quebec', 'United States', '45142'),
+(77, 'Curae; Phasellus', 'P.O. Box 374, 8289 At Avenue', 'Kano', 'KN', 'Pakistan', '3528'),
+(78, 'sit amet,', '9862 Sociis Road', 'Sint-Denijs-Westrem', 'Oost-Vlaanderen', 'Antigua and Barbuda', '7700'),
+(79, 'vel arcu.', 'Ap #290-7626 Diam. Rd.', 'Waiuku', 'North Island', 'British Indian Ocean Territory', '63078'),
+(80, 'ac mi', 'P.O. Box 905, 3611 Facilisis. Street', 'Ficarolo', 'VEN', 'Libya', '47068'),
+(81, 'enim. Etiam', '785 Tempor St.', 'Galway', 'C', 'Bonaire, Sint Eustatius and Sa', '5393WD'),
+(82, 'lorem tristique', '817-9636 Venenatis Av.', 'Corroy-le-Ch‰teau', 'Namen', 'Zambia', '9384VM'),
+(83, 'lobortis augue', 'Ap #870-1732 Suscipit, St.', 'Mildura', 'VIC', 'South Africa', '5809'),
+(84, 'elit elit', '5020 Et Rd.', 'Heerhugowaard', 'Noord Holland', 'Madagascar', '35557'),
+(85, 'natoque penatibus', 'P.O. Box 288, 3957 Scelerisque Street', 'Uyo', 'AK', 'Azerbaijan', '7850'),
+(86, 'egestas. Fusce', '266-1847 Vulputate Road', 'Belfast', 'U', 'Taiwan', '76408'),
+(87, 'eget laoreet', '732-505 Enim Av.', 'Galway', 'Connacht', 'Italy', '1575'),
+(88, 'malesuada fames', '646-1022 Elit, Av.', 'Talagante', 'Metropolitana de Santiago', 'Denmark', 'R5J 6X3'),
+(89, 'sollicitudin a,', 'Ap #882-5902 Lorem, Street', 'Cambridge Bay', 'NU', 'Guernsey', '76119'),
+(90, 'mattis ornare,', 'Ap #688-6115 Risus. Av.', 'Palayankottai', 'TN', 'Yemen', '2307XW'),
+(91, 'nec quam.', '9030 Nec, Street', 'Baton Rouge', 'Louisiana', 'Malta', '8001HB'),
+(92, 'Duis risus', '713-7391 Laoreet Rd.', 'Vienna', 'Vienna', 'Brazil', '88319'),
+(93, 'Sed eu', '711-8861 Lorem. Rd.', 'Jaén', 'Andalucía', 'Grenada', '95559-667'),
+(94, 'Pellentesque habitant', '492-9130 Consectetuer Avenue', 'Berlin', 'Berlin', 'Switzerland', '94626'),
+(95, 'massa. Suspendisse', '372-6689 Consectetuer Rd.', 'Upplands Väsby', 'AB', 'Central African Republic', '1534'),
+(96, 'Sed eget', '937-4108 Ut, Road', 'Tarnów', 'MP', 'Viet Nam', '9340'),
+(97, 'ipsum leo', '3743 In, St.', 'Batiscan', 'Quebec', 'Nigeria', '0408WN'),
+(98, 'nunc est,', 'P.O. Box 793, 5133 Amet Rd.', 'Flushing', 'Zl', 'Faroe Islands', '76060'),
+(99, 'interdum feugiat.', 'Ap #436-5907 Commodo Av.', 'Ibadan', 'Oyo', 'Senegal', '501718'),
+(100, 'penatibus et', 'Ap #897-5804 Tempor, Road', 'Whitby', 'ON', 'Chile', '02643');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctors`
+--
+
+CREATE TABLE `doctors` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `contact` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `name`, `contact`, `email`) VALUES
+(1, 'Phelan', '3628701191', 'dictum@Nunc.com'),
+(2, 'Grace', '1693423072', 'primis@Maecenaslibero.edu'),
+(3, 'Ethan', '2672319225', 'congue.a.aliquet@sollicitudin.'),
+(4, 'Brooke', '8021550311', 'justo@justoeuarcu.ca'),
+(5, 'Coby', '3291277724', 'rutrum.non.hendrerit@ornaretor'),
+(6, 'Sebastian', '7069103791', 'ac.sem.ut@tempus.net'),
+(7, 'Debra', '8647459157', 'lorem@sem.com'),
+(8, 'Leonard', '6242141758', 'Aliquam.erat.volutpat@semperdu'),
+(9, 'Idola', '9922135803', 'ultrices.Vivamus@eunequepellen'),
+(10, 'Madison', '7163701897', 'amet.diam.eu@nibhAliquam.ca'),
+(11, 'Kelly', '7068322349', 'cursus@lacusvarius.ca'),
+(12, 'Renee', '4959207263', 'facilisis.Suspendisse@urnajust'),
+(13, 'Chester', '7698713865', 'natoque.penatibus.et@Nullatemp'),
+(14, 'Mari', '2563908384', 'risus.Donec@temporaugueac.net'),
+(15, 'Lucas', '3543611072', 'a.malesuada@velit.co.uk'),
+(16, 'Callum', '9948907964', 'Cras.dolor@adipiscinglacus.co.'),
+(17, 'Quynn', '4997366763', 'nisi.sem@Integerin.org'),
+(18, 'Zephr', '8377473047', 'Suspendisse@antebibendumullamc'),
+(19, 'Lara', '9914613987', 'dui@Integeridmagna.org'),
+(20, 'Whitney', '5638671669', 'enim.mi.tempor@sapiencursus.co'),
+(21, 'Cullen', '3591679362', 'purus.mauris@sit.co.uk'),
+(22, 'Wade', '3965190345', 'ornare.egestas.ligula@nonummyu'),
+(23, 'Logan', '8397756275', 'ullamcorper@Sedpharetra.com'),
+(24, 'Liberty', '5003493696', 'molestie.pharetra.nibh@eleifen'),
+(25, 'Kaden', '3892409002', 'In@penatibuset.ca'),
+(26, 'Ulric', '9226590437', 'litora.torquent@sollicitudinam'),
+(27, 'Rana', '1619312910', 'Phasellus.at.augue@mipede.org'),
+(28, 'Olga', '6377740086', 'libero.at.auctor@adipiscinglob'),
+(29, 'Imelda', '3595869799', 'ante.Vivamus.non@libero.ca'),
+(30, 'Lisandra', '3175141540', 'quis.lectus@auctor.edu'),
+(31, 'Iliana', '3968270258', 'nec.cursus@tinciduntdui.com'),
+(32, 'Alika', '5277452509', 'tempus.mauris.erat@luctuslobor'),
+(33, 'Athena', '3326084638', 'enim.gravida.sit@turpisegestas'),
+(34, 'Lacey', '3046483220', 'sed@tincidunttempus.co.uk'),
+(35, 'Vernon', '3805439040', 'nisl.arcu@diamlorem.ca'),
+(36, 'Martina', '4876682479', 'metus.Aenean.sed@loremegetmoll'),
+(37, 'Anthony', '7046476837', 'et.magna@nuncsit.net'),
+(38, 'Evelyn', '5073342490', 'sit@ac.com'),
+(39, 'Hedy', '7554717530', 'et.netus.et@Suspendisse.co.uk'),
+(40, 'Macy', '8234007621', 'dui.Cum@laoreetlectusquis.co.u'),
+(41, 'Erin', '5343647482', 'a@eu.edu'),
+(42, 'Judah', '3013693557', 'Quisque.imperdiet@eratVivamus.'),
+(43, 'Maggie', '2063320346', 'nulla.Integer.urna@dictum.org'),
+(44, 'Marvin', '3651588806', 'mauris.sapien.cursus@Praesentl'),
+(45, 'Leilani', '1267970177', 'Quisque.fringilla.euismod@dict'),
+(46, 'Eleanor', '9487456528', 'semper.et.lacinia@ametconsecte'),
+(47, 'Vaughan', '4133990443', 'penatibus.et.magnis@mollis.edu'),
+(48, 'Regan', '1341082988', 'tortor.dictum@ProinvelitSed.ed'),
+(49, 'Seth', '4673981711', 'natoque.penatibus@sitamet.org'),
+(50, 'Phoebe', '2618372005', 'lectus@nisl.com'),
+(51, 'Wade', '9634716145', 'lacus.Nulla@Duisacarcu.org'),
+(52, 'Marvin', '2102596940', 'sapien@nasceturridiculusmus.or'),
+(53, 'Malcolm', '4988640680', 'faucibus@augueeutempor.ca'),
+(54, 'Madison', '8405760484', 'ligula.Aenean@perinceptos.co.u'),
+(55, 'Hermione', '5891811188', 'turpis@fringillaornare.com'),
+(56, 'Ray', '2142065171', 'tempor.erat.neque@fermentumarc'),
+(57, 'Azalia', '8889965213', 'sit@et.com'),
+(58, 'Beverly', '2277614912', 'aliquet.magna@primisinfaucibus'),
+(59, 'Austin', '5864680945', 'nunc.interdum@In.co.uk'),
+(60, 'May', '9696510698', 'conubia.nostra.per@Nullatincid'),
+(61, 'Deborah', '7078088583', 'vitae.aliquam.eros@enim.ca'),
+(62, 'Uriel', '2237662712', 'at@facilisisloremtristique.ca'),
+(63, 'Axel', '6123504082', 'in@ullamcorpermagnaSed.edu'),
+(64, 'Lyle', '5327482279', 'nisl.sem.consequat@convallises'),
+(65, 'Chase', '6611887437', 'magna@vehiculaaliquetlibero.co'),
+(66, 'Griffin', '8988231367', 'imperdiet.ullamcorper@ante.ca'),
+(67, 'Ralph', '4929756736', 'elit@aliquam.edu'),
+(68, 'Mason', '9418211443', 'Suspendisse.aliquet@rhoncusPro'),
+(69, 'Adrian', '9748179607', 'Vivamus.rhoncus.Donec@ipsumacm'),
+(70, 'Gannon', '5429131598', 'justo.sit.amet@Namnulla.co.uk'),
+(71, 'Marvin', '2195430506', 'ac.mi@aliquam.ca'),
+(72, 'Ava', '2953600767', 'egestas.Sed.pharetra@inloborti'),
+(73, 'Veda', '5364396950', 'arcu.Sed.et@Vestibulumaccumsan'),
+(74, 'Britanni', '5724788021', 'libero@vestibulummassa.edu'),
+(75, 'Aileen', '3152650915', 'id@natoque.co.uk'),
+(76, 'Keefe', '5953111021', 'ipsum.porta.elit@vulputate.org'),
+(77, 'Ronan', '3679692994', 'malesuada.fames@lacus.co.uk'),
+(78, 'Ariana', '8648477072', 'Nunc.lectus@luctuslobortis.com'),
+(79, 'Farrah', '8771664858', 'semper@nuncsedlibero.co.uk'),
+(80, 'Brady', '1658267219', 'diam.Sed.diam@diamvel.ca'),
+(81, 'Uriel', '6783206152', 'vitae.risus@dolorsit.com'),
+(82, 'Abigail', '5426135456', 'nulla.at.sem@odioNaminterdum.c'),
+(83, 'Jemima', '6002096412', 'pretium.neque@sociisnatoquepen'),
+(84, 'Dana', '3447776205', 'magna@arcu.co.uk'),
+(85, 'Kylie', '7406498270', 'ac@atfringilla.ca'),
+(86, 'Ayanna', '3116143340', 'Quisque.fringilla.euismod@tris'),
+(87, 'Callie', '5389775168', 'Suspendisse.sed@semmollisdui.n'),
+(88, 'Cameran', '3988761691', 'placerat.orci@natoquepenatibus'),
+(89, 'Daphne', '2999871229', 'vitae.sodales@et.co.uk'),
+(90, 'Ferris', '9649501623', 'dolor.Fusce@fermentumfermentum'),
+(91, 'Dai', '6515222680', 'id@ipsumprimis.org'),
+(92, 'Jerome', '9903993549', 'dolor.sit.amet@Sedetlibero.edu'),
+(93, 'Kessie', '1017303548', 'at.velit.Cras@rutrumjustoPraes'),
+(94, 'Alma', '4021795787', 'amet.faucibus@sapienNuncpulvin'),
+(95, 'Lareina', '3009590424', 'Fusce@pharetraNamac.org'),
+(96, 'Gavin', '8897396315', 'dictum.magna@mauriselit.edu'),
+(97, 'Christopher', '9938134826', 'eu@dolornonummyac.com'),
+(98, 'Tanya', '4601759607', 'gravida.Praesent.eu@augue.com'),
+(99, 'Yeo', '1814169919', 'odio.Nam@eleifendCrassed.net'),
+(100, 'Hasad', '7487705108', 'non@sitamet.org');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctors_clinics`
+--
+
+CREATE TABLE `doctors_clinics` (
+  `doc_id` int(11) NOT NULL,
+  `cl_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `doctors_clinics`
+--
+
+INSERT INTO `doctors_clinics` (`doc_id`, `cl_id`) VALUES
+(22, 17),
+(35, 71),
+(76, 85),
+(84, 50),
+(57, 30),
+(26, 25),
+(17, 58),
+(92, 86),
+(4, 96),
+(48, 93),
+(17, 1),
+(88, 28),
+(15, 24),
+(55, 12),
+(22, 35),
+(40, 85),
+(100, 10),
+(90, 39),
+(20, 24),
+(24, 44),
+(58, 67),
+(79, 4),
+(60, 12),
+(6, 51),
+(2, 22),
+(45, 87),
+(26, 81),
+(16, 31),
+(85, 9),
+(67, 39),
+(50, 81),
+(71, 91),
+(49, 92),
+(65, 41),
+(24, 91),
+(63, 42),
+(32, 39),
+(7, 2),
+(28, 2),
+(85, 41),
+(70, 75),
+(48, 63),
+(11, 92),
+(38, 36),
+(28, 65),
+(26, 26),
+(45, 67),
+(20, 93),
+(12, 22),
+(95, 45),
+(40, 31),
+(48, 17),
+(2, 54),
+(51, 41),
+(21, 15),
+(17, 17),
+(61, 51),
+(37, 81),
+(84, 49),
+(95, 29),
+(92, 15),
+(44, 38),
+(77, 30),
+(18, 5),
+(58, 80),
+(30, 29),
+(66, 62),
+(25, 96),
+(47, 90),
+(5, 36),
+(23, 37),
+(97, 97),
+(48, 79),
+(32, 88),
+(45, 32),
+(8, 7),
+(68, 75),
+(19, 59),
+(30, 92),
+(6, 33),
+(38, 23),
+(52, 11),
+(44, 52),
+(12, 34),
+(61, 99),
+(67, 96),
+(53, 100),
+(73, 47),
+(36, 63),
+(57, 71),
+(45, 66),
+(29, 19),
+(93, 78),
+(54, 6),
+(66, 18),
+(92, 44),
+(60, 79),
+(33, 77),
+(79, 99),
+(46, 99),
+(38, 6),
+(38, 27),
+(86, 54),
+(46, 71),
+(17, 25),
+(37, 84),
+(96, 2),
+(26, 14),
+(15, 16),
+(43, 73),
+(16, 82),
+(84, 51),
+(31, 50),
+(43, 85),
+(98, 11),
+(62, 72),
+(51, 5),
+(92, 8),
+(5, 87),
+(34, 46),
+(19, 45),
+(25, 5),
+(63, 27),
+(65, 45),
+(79, 63),
+(78, 18),
+(42, 92),
+(79, 52),
+(90, 95),
+(72, 67),
+(14, 95),
+(5, 90),
+(91, 19),
+(13, 26),
+(27, 45),
+(82, 78),
+(43, 27),
+(28, 96),
+(42, 5),
+(69, 96),
+(48, 90),
+(99, 58),
+(65, 82),
+(88, 94),
+(2, 5),
+(8, 35),
+(33, 7),
+(64, 13),
+(70, 21),
+(94, 24),
+(28, 73),
+(26, 29),
+(38, 35),
+(5, 56),
+(16, 1),
+(68, 62),
+(75, 33),
+(99, 45),
+(27, 77),
+(34, 53),
+(94, 75),
+(38, 12),
+(8, 2),
+(94, 83),
+(19, 94),
+(79, 45),
+(62, 15),
+(77, 92),
+(50, 68),
+(84, 46),
+(48, 71),
+(28, 81),
+(9, 90),
+(26, 19),
+(58, 75),
+(49, 58),
+(69, 81),
+(79, 94),
+(42, 94),
+(35, 87),
+(29, 81),
+(97, 7),
+(44, 92),
+(70, 96),
+(99, 13),
+(17, 4),
+(45, 30),
+(81, 37),
+(25, 7),
+(18, 74),
+(7, 90),
+(41, 67),
+(88, 14),
+(69, 56),
+(38, 95),
+(14, 7),
+(29, 12),
+(73, 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `clinics`
+--
+ALTER TABLE `clinics`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cl_id` (`id`);
+
+--
+-- Indexes for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `doc_id` (`id`);
+
+--
+-- Indexes for table `doctors_clinics`
+--
+ALTER TABLE `doctors_clinics`
+  ADD KEY `doctors_clinics_ibfk_1` (`doc_id`),
+  ADD KEY `doctors_clinics_ibfk_2` (`cl_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `clinics`
+--
+ALTER TABLE `clinics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+--
+-- AUTO_INCREMENT for table `doctors`
+--
+ALTER TABLE `doctors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `doctors_clinics`
+--
+ALTER TABLE `doctors_clinics`
+  ADD CONSTRAINT `doctors_clinics_ibfk_1` FOREIGN KEY (`doc_id`) REFERENCES `doctors` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `doctors_clinics_ibfk_2` FOREIGN KEY (`cl_id`) REFERENCES `clinics` (`id`) ON DELETE CASCADE;
