@@ -63,18 +63,24 @@
        */
       if (count($data) === 0) {
         $arrResponse = array('error' => true, 'message' => 'No more pages exist');
+
+        return $response->withStatus(404)
+                        ->withHeader('Content-Type', 'application/json')
+                        ->withJson($arrResponse);
       } else {
         $arrResponse = array('error' => false, 'doctors' => $data);
+        return $response->withStatus(200)
+                        ->withHeader('Content-Type', 'application/json')
+                        ->withJson($arrResponse);
       }
 
     } catch(PDOException $Exception) {
       $arrResponse = array('error' => true, 'message' => 'Server is unable to get data');
-    }
 
-    /**
-     * Send JSON as response
-     */
-    return $response->withJson($arrResponse);
+      return $response->withStatus(500)
+                      ->withHeader('Content-Type', 'application/json')
+                      ->withJson($arrResponse);
+    }
   });
 
   /**
@@ -125,18 +131,25 @@
        */
       if(count($data) === 0) {
         $arrResponse = array('error' => true, 'message' => 'No more pages exist');
+
+        return $response->withStatus(404)
+                        ->withHeader('Content-Type', 'application/json')
+                        ->withJson($arrResponse);
       } else {
         $arrResponse = array('error' => false, 'clinics' => $data);
+
+        return $response->withStatus(200)
+                        ->withHeader('Content-Type', 'application/json')
+                        ->withJson($arrResponse);
       }
 
     } catch(PDOException $Exception) {
       $arrResponse = array('error' => true, 'message' => 'Server is unable to get data');
-    }
 
-    /**
-     * Send JSON as response
-     */
-    return $response->withJson($arrResponse);
+      return $response->withStatus(500)
+                      ->withHeader('Content-Type', 'application/json')
+                      ->withJson($arrResponse);
+    }
   });
 
   /**
@@ -184,6 +197,10 @@
        */
       if (count($doc_data) === 0) {
         $arrResponse = array("error" => true, "message" => "No doctor exist with given ID");
+
+        return $response->withStatus(404)
+                        ->withHeader('Content-Type', 'application/json')
+                        ->withJson($arrResponse);
       }
       else {
         /**
@@ -200,16 +217,19 @@
         $clinics_data = $db->query($clinics_prep_query, $doc_params);
 
         $arrResponse = array("error" => false, "doctor" => $doc_data[0], "clinics" => $clinics_data);
+
+        return $response->withStatus(200)
+                        ->withHeader('Content-Type', 'application/json')
+                        ->withJson($arrResponse);
       }
 
     } catch(PDOException $Exception) {
       $arrResponse = array('error' => true, 'message' => 'Server is unable to get data');
-    }
 
-    /**
-     * Return response as JSON
-     */
-    return $response->withJson($arrResponse);
+      return $response->withStatus(500)
+                      ->withHeader('Content-Type', 'application/json')
+                      ->withJson($arrResponse);
+    }
   });
 
   /**
@@ -257,6 +277,10 @@
        */
       if (count($cl_data) === 0) {
         $arrResponse = array("error" => true, "message" => "No clinics exist with given ID");
+
+        return $response->withStatus(404)
+                        ->withHeader('Content-Type', 'application/json')
+                        ->withJson($arrResponse);
       }
       else {
         /**
@@ -273,16 +297,20 @@
         $doctors_data = $db->query($doctors_prep_query, $cl_params);
 
         $arrResponse = array("error" => false, "clinic" => $cl_data[0], "doctors" => $doctors_data);
+
+        return $response->withStatus(200)
+                        ->withHeader('Content-Type', 'application/json')
+                        ->withJson($arrResponse);
       }
 
     } catch(PDOException $Exception) {
       $arrResponse = array('error' => true, 'message' => 'Server is unable to get data');
+
+      return $response->withStatus(500)
+                      ->withHeader('Content-Type', 'application/json')
+                      ->withJson($arrResponse);
     }
 
-    /**
-     * Return response as JSON
-     */
-    return $response->withJson($arrResponse);
   });
 
   $app->run();
